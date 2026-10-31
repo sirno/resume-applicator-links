@@ -1,0 +1,15 @@
+{
+  "name": "resume-applicator-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Resume Applicator's redirect server: counts clicks on the links of resumes and cover letters",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test --no-warnings=ExperimentalWarning test/*.test.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.0"
+  }
+}

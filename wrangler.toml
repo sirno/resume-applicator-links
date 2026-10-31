@@ -1,0 +1,17 @@
+# The redirect server's Worker; README.md says how to deploy it.
+name = "resume-tracker"
+main = "src/worker.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "resume-tracker"
+# the id `npx wrangler d1 create resume-tracker` prints
+database_id = "00000000-0000-0000-0000-000000000000"
+
+# Your own domain instead of resume-tracker.<account>.workers.dev (the domain must be on Cloudflare):
+# routes = [{ pattern = "go.example.com", custom_domain = true }]
+
+[observability]
+enabled = true
