@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "Resume Applicator's redirect server: counts clicks on the links of resumes and cover letters",
+  "license": "MIT",
+  "repository": "github:sirno/resume-applicator-links",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",

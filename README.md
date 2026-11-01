@@ -1,6 +1,6 @@
 # Resume Applicator: redirect server for link tracking
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/OWNER/resume-applicator-links)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/sirno/resume-applicator-links)
 
 Resume Applicator can track the links of the resumes and cover letters it builds. With this server,
 every link in a document's header points here first: the server counts the click and forwards it to
@@ -81,3 +81,7 @@ stay in the app. Don't delete links: a link the server doesn't know answers 404.
 | `GET /api/status` | `{ok, service: "resume-applicator-tracker", version, links, clicks}` |
 | `PUT /api/links` with `{links: [{token, target}]}` (at most 100) | `{ok, registered, conflicts}`; 409 when a token already leads elsewhere, since a token keeps its first address |
 | `GET /api/clicks?after=<id>` | `{clicks: [{id, token, at, country, network, agent}], more}`, oldest first, 1000 at a time |
+
+## License
+
+MIT; see [LICENSE](LICENSE).
