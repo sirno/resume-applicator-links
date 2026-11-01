@@ -1,0 +1,4 @@
+node_modules/
+# Wrangler's local state, and the key for `npm run dev`
+.wrangler/
+.dev.vars

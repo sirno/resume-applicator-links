@@ -1,0 +1,5 @@
+# A long random key only you know, such as the output of `openssl rand -hex 32`; enter the same key
+# in Resume Applicator under Settings → Link tracking. The app sends it to call the server's API;
+# the redirects need none. Left empty here, so the Deploy to Cloudflare button doesn't fill in a
+# value everyone would share.
+API_KEY=

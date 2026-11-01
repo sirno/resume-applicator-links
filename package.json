@@ -1,5 +1,5 @@
 {
-  "name": "resume-applicator-tracker",
+  "name": "resume-applicator-links",
   "version": "1.0.0",
   "private": true,
   "description": "Resume Applicator's redirect server: counts clicks on the links of resumes and cover letters",
@@ -11,5 +11,15 @@
   },
   "devDependencies": {
     "wrangler": "^4.156.0"
+  },
+  "cloudflare": {
+    "bindings": {
+      "API_KEY": {
+        "description": "A long random key only you know, such as the output of `openssl rand -hex 32`. Enter the same key in **Resume Applicator** under *Settings → Link tracking*: the app uses it to register links and fetch their clicks."
+      },
+      "DB": {
+        "description": "Keeps the tracked links and their clicks: no IP addresses, no company names. Created for you."
+      }
+    }
   }
 }
