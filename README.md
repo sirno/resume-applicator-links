@@ -15,11 +15,12 @@ your library or the PDFs. The app maps the tokens back to its applications.
 
 ## Deploying it with the button
 
-1. Make a key, a long random text only you know: `openssl rand -hex 32` prints one.
+1. In the app, open **Settings → Link tracking → Set up with Cloudflare** and create a key. The app
+   makes a long random key, keeps it, and shows it once: copy it.
 2. Click **Deploy to Cloudflare** above, sign in to Cloudflare (or create a free account) and paste
    the key as `API_KEY`. Cloudflare creates the Worker, named `links`, and its database.
-3. In the app, open **Settings → Link tracking** and enter the Worker's address,
-   `https://links.<your subdomain>.workers.dev`, and the key; then *Test* and *Save*.
+3. Back in the app, paste the Worker's address, `https://links.<your subdomain>.workers.dev`, into
+   the last step; then *Test* and *Save*.
 
 Turn on *Track links* in an application's *Template* card, and its PDFs are built with tracked links.
 
