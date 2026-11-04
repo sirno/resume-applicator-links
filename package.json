@@ -20,7 +20,7 @@
         "description": "The key **Resume Applicator** makes under *Settings → Link tracking → Set up with Cloudflare*. Paste it as it is: the app uses it to register links and fetch their clicks."
       },
       "DB": {
-        "description": "Keeps the tracked links and their clicks: no IP addresses, no company names. Created for you."
+        "description": "Keeps the tracked links and their clicks, without IP addresses. Created for you."
       }
     }
   }
