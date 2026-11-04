@@ -4,7 +4,8 @@
 //                     the click: time, country, network (the ASN's organisation) and User-Agent,
 //                     never the IP address. ?via=app (the app's own window) forwards without
 //                     recording; HEAD requests are not recorded either.
-// GET /api/status     {ok, links, clicks}: the app's Test button
+// GET /api/status     {ok, service, version, links, clicks}: the app's Test button, and its daily
+//                     check of the protocol version
 // PUT /api/links      {links: [{token, target}]}: tokens the app is about to put into a PDF. A
 //                     token keeps the address it was first registered with; one registered with
 //                     another address is a conflict (409).
@@ -12,11 +13,16 @@
 //
 // /api/* needs "Authorization: Bearer <API_KEY>", the Worker's secret.
 
+// the protocol's version, which /api/status reports. Changes are additive; anything else, or an
+// addition the app comes to rely on, raises it (README.md, Changing the protocol)
+const VERSION = 1;
 const TOKEN = /^[a-z2-7]{12,32}$/; // the app's tokens: base32, lower case
 const MAX_TARGET = 2048;
 const MAX_LINKS = 100; // per PUT; D1 binds at most 100 values per statement
 const PAGE = 1000; // clicks per GET
 
+// made on every API call, so there are no migrations: a new column goes behind a check of
+// PRAGMA table_info, and the code works with the rows from before it (README.md)
 const SCHEMA = [
   "CREATE TABLE IF NOT EXISTS links (token TEXT PRIMARY KEY, target TEXT NOT NULL, created TEXT NOT NULL)",
   "CREATE TABLE IF NOT EXISTS clicks (id INTEGER PRIMARY KEY AUTOINCREMENT, token TEXT NOT NULL, "
@@ -85,7 +91,7 @@ function authorized(request, key) {
 async function status(env) {
   const [links, clicks] = await env.DB.batch([
     env.DB.prepare("SELECT COUNT(*) AS n FROM links"), env.DB.prepare("SELECT COUNT(*) AS n FROM clicks")]);
-  return json(200, { ok: true, service: "resume-applicator-tracker", version: 1,
+  return json(200, { ok: true, service: "resume-applicator-tracker", version: VERSION,
     links: links.results[0].n, clicks: clicks.results[0].n });
 }
 
